@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELEM5</title>
+    <link href="index.css" rel="stylesheet">
+</head>
+<body>
+    <div id="navbar" class="navbar">
+        <button class="menuButton">Menu</button><button class="homeButton">Home</button>
+    </div>
+    <div class="gameComponent" id="playArea">
+        <h3>Play Area</h3><br>
+        <div class="elem lightblue" id="0" onclick="set1st(id)" oncontextmenu="set2nd(id);return false;">Air</div>
+        <div class="elem brown" id="1" onclick="set1st(id)" oncontextmenu="set2nd(id);return false;">Earth</div>
+        <div class="elem red" id="2" onclick="set1st(id)" oncontextmenu="set2nd(id);return false;">Fire</div>
+        <div class="elem blue" id="3" onclick="set1st(id)" oncontextmenu="set2nd(id);return false;">Water</div>
+    </div>
+    <div class="gameComponent" id="newElems">
+        <div class="playHeader">
+            <h3>New Elems</h3>
+        </div>
+    </div>
+    <div id="footer">By Monocle - v a1.0</div>
+</body>
+<script src="index.js"></script>
+</html>
