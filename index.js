@@ -12,14 +12,7 @@ var elements = {
     0: ["Air", "lightblue"],
     1: ["Earth", "brown"],
     2: ["Fire", "red"],
-    3: ["Water", "blue"],
-    4: ["Steam", "lightblue"],
-    5: ["Cloud", "lightblue"],
-    6: ["Lava", "red"],
-    7: ["Obsidian", "purple"],
-    8: ["Mud", "brown"],
-    9: ["Dust", "gray"],
-    10: ["Pollution", "green"]
+    3: ["Water", "blue"]
 };
 
 var recipes = {
