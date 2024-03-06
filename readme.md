@@ -2,6 +2,9 @@
 My personal Elemental remake. It's very basic at the moment as it is still in the alpha phase..
 
 # Changelog
+## Version 1.11a
+### Bugfixes
+- Fixed element display not updating on creation of new element
 ## Version 1.10a
 ### Features
 - Home button is now active; it brings you back to monoclethe.github.io

@@ -108,6 +108,7 @@ function combine () {
             recipes[selected[0]][selected[1]] = Object.keys(elements).length - 1;
             updateDispElems();
             updateNewElems();
+            updateElemDisp();
         }
         
     }
