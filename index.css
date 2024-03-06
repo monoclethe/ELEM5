@@ -52,19 +52,53 @@ button:hover {
     color: rgb(155, 92, 103);
 }
 h3 {
-    margin-top: 0px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    margin-top: 0px;   
+    display: inline;
 }
 .elem {
-    width: 64px;
-    height: 64px;
     border: 3px solid black;
     background-color: #4f4f4f;
     color: white;
     border-radius: 10px;
-    display: flex;
-    flex-direction: row;
     padding: 2px;
+    display: inline-block;
+    margin: 2px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+.elemDisp {
+    float: right;
+}
+.playHeader {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+.elemCreate {
+    display: none;
+    position: absolute;
+    width: 50vw;
+    height: 50vh;
+    left: 25vw;
+    top: 25vh;
+    background-color: #4f4f4f;
+    border: 10px solid black;
+}
+.elemCreate > h2 {
+    text-align: center;
+    color: white;
+}
+.elemCreate > input {
+    background-color: #4f4f4f;
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 /*Background is 80 brighter on rgb (50 in hex)*/
 .black {
