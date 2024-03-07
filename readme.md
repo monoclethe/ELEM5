@@ -8,6 +8,7 @@ My personal Elemental remake. It's very basic at the moment as it is still in th
 - Added Menu button functionality
 - Added ability to download element info via menu
 - More verbose New Element display
+- A few default recipes to play around with and build on
 ## Version 1.21a
 ### Tweaks
 - Adjusted width of New Element creation to be more reasonable at larger screen sizes
