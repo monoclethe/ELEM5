@@ -102,6 +102,13 @@ h3 {
     width: 40%;
     min-width: 50px;
 }
+label {
+    color: white;
+}
+.center {
+    margin-left: 25%;
+    margin-right: 25%;
+}
 /*Background is 80 brighter on rgb (50 in hex)*/
 .black {
     border: 3px solid black;
@@ -157,4 +164,28 @@ h3 {
     border-color: gray;
     background-color: #D0D0D0;
     color: black;
+}
+
+.warn {
+    display: none;
+    position: absolute;
+    width: 90%;
+    background-color: #ff8f8f;
+    border: 3px solid red;
+    color: white;
+    left: 5%;
+    top: 5%;
+    font-size: 1em;
+    text-align: center;
+}
+.menu {
+    display: none;
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    left: 15%;
+    top: 15%;
+    background-color: white;
+    border: 3px solid lightgray;
+    padding: 2px;
 }

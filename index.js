@@ -12,19 +12,13 @@ elemCreate.style = "display: none;";
 
 var playArea = document.getElementById("playArea");
 var newElemBuffer = [];
-var elements = {
-    0: ["Air", "lightblue"],
-    1: ["Earth", "brown"],
-    2: ["Fire", "red"],
-    3: ["Water", "blue"]
-};
+var reverse = document.getElementById("reverse");
+var elements = {"0":["Air","lightblue"],"1":["Earth","brown"],"2":["Fire","red"],"3":["Water","blue"],"4":["Dust","gray"],"5":["Ash","black"],"6":["Heat","red"],"7":["Lava","orangered"],"8":["Magma","orangered"],"9":["Bubble","blue"],"10":["Mist","lightblue"],"11":["Dirt","brown"],"12":["Mud","brown"]}
 
-var recipes = {
-    0: {},
-    1: {},
-    2: {},
-    3: {}
-};
+var recipes = {"0":{"1":4,"3":10},"1":{"0":4,"2":5,"3":12,"4":11,"6":7,"7":8},"2":{"1":5,"2":6},"3":{"0":9,"1":12,"11":12},"4":{"1":11},"5":{},"6":{"1":7},"7":{"1":8},"8":{},"9":{},"10":{},"11":{"3":12},"12":{}}
+
+var createPopup = false;
+var menu = false;
 
 var discovered = [0, 1, 2, 3];
 
@@ -62,13 +56,17 @@ function combine () {
         if (!discovered.includes(product) && product !== undefined) {
             discovered.push(product);
             updateDispElems();
-            newElemBuffer.push(product);
+            newElemBuffer.push([product, selected[0], selected[1]]);
             updateNewElems();
             finCombine();
         } else if (product === undefined) {
-            elemName.classList = "elem red";
-            elemCreate.style = "display: block;";
-            elemName.focus();
+            if (!menu && !createPopup) {
+                selectedPrev = selected;
+                elemName.classList = "elem red";
+                elemCreate.style = "display: block;";
+                elemName.focus();
+                createPopup = true;
+            }
         }
         
     }
@@ -115,22 +113,21 @@ function updateDispElems() {
     }
 }
 function updateNewElems () {
-    try {
-        let len = 16;
-        let workingID;
-        document.getElementById("newElemsList").innerHTML = "";
-        if (newElemBuffer.length < 16) {
-            len = newElemBuffer.length;
-        }
-        for (let i = len - 1; i > -1; i--) {
-            workingID = newElemBuffer[i];
-            document.getElementById("newElemsList").innerHTML += "<div class=\"elem " + elements[workingID][1] + "\">" + elements[workingID][0] + "</div><br>";
-        }
-    } catch(err) {
-        alert(err);
+    let newList = document.getElementById("newElemsList");
+    newList.innerHTML = ""
+
+    let maxLen = 16;
+    if (newElemBuffer.length < maxLen) {
+        maxLen = newElemBuffer.length;
+    }
+
+    for (let i = maxLen - 1; i >= 0; i--) {
+        newList.innerHTML += "<div class=\"elem " + elements[newElemBuffer[i][1]][1] + "\">" + elements[newElemBuffer[i][1]][0] + "</div>" + "+" + "<div class=\"elem " + elements[newElemBuffer[i][2]][1] + "\">" + elements[newElemBuffer[i][2]][0] + "</div>" + "=" + "<div class=\"elem " + elements[newElemBuffer[i][0]][1] + "\">" + elements[newElemBuffer[i][0]][0] + "</div>" + "<br>"
     }
 }
+var selectedPrev = [];
 function inputElemData () {
+    createPopup = false;
     elemCreate.style = "display: none;";
     let response = [elemName.value, elemColor.value];
     let elemNames = [];
@@ -145,12 +142,17 @@ function inputElemData () {
             
             if (!elemExists) {
                 elements[Object.keys(elements).length] = [response[0], response[1]];
-                recipes[Object.keys(elements).length - 1] = {};
-                newElemBuffer.push(Object.keys(elements).length - 1);
                 discovered.push(Object.keys(elements).length - 1);
             }
+            recipes[Object.keys(elements).length - 1] = {};
+            newElemBuffer.push([Object.keys(elements).length - 1, selectedPrev[0], selectedPrev[1]]);
 
             recipes[selected[0]][selected[1]] = Object.keys(elements).length - 1;
+            if (reverse.checked) {
+                if (!recipes[selected[1]][selected[0]]) {
+                    recipes[selected[1]][selected[0]] = Object.keys(elements).length - 1;
+                }
+            }
             updateDispElems();
             updateNewElems();
             updateElemDisp();
@@ -160,6 +162,19 @@ function inputElemData () {
 }
 function updateColorCreate () {
     elemName.classList = "elem " + elemColor.value;
+}
+function copyData () {
+    alert("Data Copied!")
+    navigator.clipboard.writeText(JSON.stringify(elements) + "\n" + JSON.stringify(recipes));
+}
+function showMenu () {
+    if (!menu && !createPopup) {
+        document.getElementById("menu").style = "display: block";
+        menu = true;
+    } else {
+        document.getElementById("menu").style = "display: none";
+        menu = false;
+    }
 }
 updateElemDisp();
 updateDispElems();

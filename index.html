@@ -7,8 +7,9 @@
     <link href="index.css" rel="stylesheet">
 </head>
 <body>
+    <div class="warn" id="warn">Warning Here</div>
     <div id="navbar" class="navbar">
-        <button class="menuButton">Menu</button><a href="https://monoclethe.github.io"><button class="homeButton">Home</button></a>
+        <button class="menuButton" onclick="showMenu()">Menu</button><a href="https://monoclethe.github.io"><button class="homeButton">Home</button></a>
     </div>
     <div class="gameComponent" id="playArea">
         <div class="playHeader">
@@ -31,10 +32,10 @@
 
         </div>
     </div>
-    <div id="footer">By Monocle - Version 1.20a</div>
+    <div id="footer">By Monocle - Version 1.30a</div>
     <div class="elemCreate" id="elemCreate">
         <h2>New Element!</h2>
-        <input class="elem" id="elemName" type="text" placeholder="Element Name Here">
+        <input class="elem" id="elemName" type="text" placeholder="Element Name Here" autocomplete="off">
         <select name="colors" id="colorSelect" onchange="updateColorCreate();">
             <option value="red">Red</option>
             <option value="orangered">Red Orange</option>
@@ -48,7 +49,13 @@
             <option value="gray">Gray</option>
             <option value="black">Black</option>
         </select>
+        <input type="checkbox" id="reverse">
         <input type="button" value="Submit" id="subElem" onclick="inputElemData()">
+    </div>
+    <div id="menu" class="menu">
+        <h1>Menu</h1>
+        <h2>Misc.</h2>
+        <input type="button" id="downloadElemData" value="Copy Element Data and Recipes" onclick="copyData()">
     </div>
 </body>
 <script src="index.js"></script>
