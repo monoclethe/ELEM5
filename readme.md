@@ -2,6 +2,9 @@
 My personal Elemental remake. It's very basic at the moment as it is still in the alpha phase..
 
 # Changelog
+## Version 1.21a
+### Tweaks
+- Adjusted width of New Element creation to be more reasonable at larger screen sizes
 ## Version 1.20a
 ### Features
 - New GUI for element creation

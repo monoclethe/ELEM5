@@ -79,8 +79,8 @@ h3 {
 }
 .elemCreate {
     position: absolute;
-    width: 50%;
-    left: 25vw;
+    width: 25%;
+    left: 37.5vw;
     top: 25vh;
     background-color: #4f4f4f;
     border: 10px solid black;
@@ -89,21 +89,18 @@ h3 {
     text-align: center;
     color: white;
 }
-.elemCreate > input {
+.elemCreate > input#elemName {
     font-family: sans-serif;
     text-align: center;
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
+    width: calc(100% - 9px);
+    max-width: 25vw;
+    left: 0;
+    margin-left: 0px;
 }
-#colorSelect {
+#colorSelect, #subElem {
     margin-left: 30%;
     width: 40%;
     min-width: 50px;
-}
-.darkButton {
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
 /*Background is 80 brighter on rgb (50 in hex)*/
 .black {
