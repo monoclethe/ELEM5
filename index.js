@@ -5,6 +5,10 @@ document.addEventListener("keypress", function(event) {
     }
 });
 
+var elemCreate = document.getElementById("elemCreate");
+var elemName = document.getElementById("elemName");
+var elemColor = document.getElementById("colorSelect");
+elemCreate.style = "display: none;";
 
 var playArea = document.getElementById("playArea");
 var newElemBuffer = [];
@@ -25,6 +29,8 @@ var recipes = {
 var discovered = [0, 1, 2, 3];
 
 var selected = [-1, -1];
+
+var product;
 
 function updateElemDisp () {
     document.getElementById("elemDisp").innerHTML = "(" + discovered.length + "/" + Object.keys(elements).length + ")";
@@ -58,36 +64,16 @@ function combine () {
             updateDispElems();
             newElemBuffer.push(product);
             updateNewElems();
+            finCombine();
         } else if (product === undefined) {
-            //Add a GUI system for this later...
-            //discovered, newElemBuffer, updateDispElems, updateNewElems, elements, recipes
-            let response = prompt("Undiscovered Element/Recipe! Type the name / color of the new element.");
-            response = response.split("/");
-            
-            let elemNames = [];
-            for (let i = 0; i < Object.keys(elements).length; i++) {
-                elemNames.push(elements[i][0]);
-            }
-            
-            let elemExists = false;
-            if (elemNames.includes(response[0])) {
-                elemExists = true;
-            }
-            
-            if (!elemExists) {
-                elements[Object.keys(elements).length] = [response[0], response[1]];
-                recipes[Object.keys(elements).length - 1] = {};
-                newElemBuffer.push(Object.keys(elements).length - 1);
-                discovered.push(Object.keys(elements).length - 1);
-            }
-
-            recipes[selected[0]][selected[1]] = Object.keys(elements).length - 1;
-            updateDispElems();
-            updateNewElems();
-            updateElemDisp();
+            elemName.classList = "elem red";
+            elemCreate.style = "display: block;";
         }
         
     }
+    
+}
+function finCombine () {
     let prevSelect = selected;
     selected = [-1, -1];
     updateColor(prevSelect[0]);
@@ -142,6 +128,37 @@ function updateNewElems () {
     } catch(err) {
         alert(err);
     }
+}
+function inputElemData () {
+    elemCreate.style = "display: none;";
+    let response = [elemName.value, elemColor.value];
+    let elemNames = [];
+            for (let i = 0; i < Object.keys(elements).length; i++) {
+                elemNames.push(elements[i][0]);
+            }
+            
+            let elemExists = false;
+            if (elemNames.includes(response[0])) {
+                elemExists = true;
+            }
+            
+            if (!elemExists) {
+                elements[Object.keys(elements).length] = [response[0], response[1]];
+                recipes[Object.keys(elements).length - 1] = {};
+                newElemBuffer.push(Object.keys(elements).length - 1);
+                discovered.push(Object.keys(elements).length - 1);
+            }
+
+            recipes[selected[0]][selected[1]] = Object.keys(elements).length - 1;
+            updateDispElems();
+            updateNewElems();
+            updateElemDisp();
+    finCombine();
+    elemName.value = "";
+    elemColor.value = "red";
+}
+function updateColorCreate () {
+    elemName.classList = "elem " + elemColor.value;
 }
 updateElemDisp();
 updateDispElems();

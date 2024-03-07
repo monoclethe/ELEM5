@@ -31,17 +31,24 @@
 
         </div>
     </div>
-    <div id="footer">By Monocle - Version 1.10a</div>
+    <div id="footer">By Monocle - Version 1.20a</div>
     <div class="elemCreate" id="elemCreate">
         <h2>New Element!</h2>
-        <input class="elem" type="text" value="Element Name Here">
-        <select name="colors" id="colorSelect">
+        <input class="elem" id="elemName" type="text" placeholder="Element Name Here">
+        <select name="colors" id="colorSelect" onchange="updateColorCreate();">
             <option value="red">Red</option>
             <option value="orangered">Red Orange</option>
             <option value="brown">Brown</option>
             <option value="orange">Orange</option>
             <option value="yellow">Yellow</option>
+            <option value="green">Green</option>
+            <option value="lightblue">Light Blue</option>
+            <option value="blue">Blue</option>
+            <option value="purple">Purple</option>
+            <option value="gray">Gray</option>
+            <option value="black">Black</option>
         </select>
+        <input type="button" value="Submit" class="darkButton" onclick="inputElemData()">
     </div>
 </body>
 <script src="index.js"></script>
