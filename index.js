@@ -68,6 +68,7 @@ function combine () {
         } else if (product === undefined) {
             elemName.classList = "elem red";
             elemCreate.style = "display: block;";
+            elemName.focus();
         }
         
     }

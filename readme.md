@@ -5,6 +5,7 @@ My personal Elemental remake. It's very basic at the moment as it is still in th
 ## Version 1.21a
 ### Tweaks
 - Adjusted width of New Element creation to be more reasonable at larger screen sizes
+- Auto-focus on element name box on creation
 ## Version 1.20a
 ### Features
 - New GUI for element creation
