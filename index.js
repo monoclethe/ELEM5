@@ -20,7 +20,7 @@ var recipes = {"0":{"1":4,"3":10},"1":{"0":4,"2":5,"3":12,"4":11,"6":7,"7":8},"2
 var createPopup = false;
 var menu = false;
 
-var discovered = [0, 1, 2, 3];
+var discovered = ["0", "1", "2", "3"];
 
 var selected = [-1, -1];
 
@@ -141,14 +141,12 @@ function inputElemData () {
         console.log("found element exists already")
         let nameElems = reverseDict(elemNames);
         workingID = nameElems[response[0]];
-        recipes[selectedPrev[0]][selected[1]] = workingID;
+        recipes[selected[0]][selected[1]] = workingID;
         newElemBuffer.push([workingID, selectedPrev[0], selected[1]]);
         if (reverse.checked) {
-            recipes[selectedPrev[1]][selected[0]] = workingID;
+            recipes[selected[1]][selected[0]] = workingID;
         }
-    }
-    
-    if (!elemExists) {
+    } else if (!elemExists) {
         elements[Object.keys(elements).length] = [response[0], response[1]];
         discovered.push(Object.keys(elements).length - 1);
         recipes[Object.keys(elements).length - 1] = {};
