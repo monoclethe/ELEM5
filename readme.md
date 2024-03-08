@@ -2,6 +2,9 @@
 My personal Elemental remake. It's very basic at the moment as it is still in the alpha phase..
 
 # Changelog
+## Version 1.31a
+### Bugfixes
+- Fixed redundant recipes weird behavior
 ## Version 1.30a
 ### Features
 - Added reversible checkbox to element creation screen for easy reversible recipes

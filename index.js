@@ -131,31 +131,39 @@ function inputElemData () {
     elemCreate.style = "display: none;";
     let response = [elemName.value, elemColor.value];
     let elemNames = [];
-            for (let i = 0; i < Object.keys(elements).length; i++) {
-                elemNames.push(elements[i][0]);
-            }
-            
-            let elemExists = false;
-            if (elemNames.includes(response[0])) {
-                elemExists = true;
-            }
-            
-            if (!elemExists) {
-                elements[Object.keys(elements).length] = [response[0], response[1]];
-                discovered.push(Object.keys(elements).length - 1);
-            }
-            recipes[Object.keys(elements).length - 1] = {};
-            newElemBuffer.push([Object.keys(elements).length - 1, selectedPrev[0], selectedPrev[1]]);
-
-            recipes[selected[0]][selected[1]] = Object.keys(elements).length - 1;
-            if (reverse.checked) {
-                if (!recipes[selected[1]][selected[0]]) {
-                    recipes[selected[1]][selected[0]] = Object.keys(elements).length - 1;
-                }
-            }
-            updateDispElems();
-            updateNewElems();
-            updateElemDisp();
+    for (let i = 0; i < Object.keys(elements).length; i++) {
+        elemNames.push(elements[i][0]);
+    }
+    
+    let elemExists = false;
+    if (elemNames.includes(response[0])) {
+        elemExists = true;
+        console.log("found element exists already")
+        let nameElems = reverseDict(elemNames);
+        workingID = nameElems[response[0]];
+        recipes[selectedPrev[0][selected[1]]] = workingID;
+        newElemBuffer.push([workingID, selectedPrev[0], selected[1]]);
+        if (reverse.checked) {
+            recipes[selectedPrev[1][selected[0]]] = workingID;
+        }
+    }
+    
+    if (!elemExists) {
+        elements[Object.keys(elements).length] = [response[0], response[1]];
+        discovered.push(Object.keys(elements).length - 1);
+        recipes[Object.keys(elements).length - 1] = {};
+        newElemBuffer.push([Object.keys(elements).length - 1, selectedPrev[0], selectedPrev[1]]);
+        recipes[selected[0]][selected[1]] = Object.keys(elements).length - 1;
+    }
+    
+    if (reverse.checked && !elemExists) {
+        if (!recipes[selected[1]][selected[0]]) {
+            recipes[selected[1]][selected[0]] = Object.keys(elements).length - 1;
+        }
+    }
+    updateDispElems();
+    updateNewElems();
+    updateElemDisp();
     finCombine();
     elemName.value = "";
     elemColor.value = "red";
@@ -175,6 +183,15 @@ function showMenu () {
         document.getElementById("menu").style = "display: none";
         menu = false;
     }
+}
+function reverseDict (dict) {
+    let keys = Object.keys(dict);
+    let vals = Object.values(dict);
+    let fin = {}
+    for (let i = 0; i < keys.length; i++) {
+        fin[vals[i]] = keys[i];
+    }
+    return fin;
 }
 updateElemDisp();
 updateDispElems();
