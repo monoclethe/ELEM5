@@ -141,10 +141,10 @@ function inputElemData () {
         console.log("found element exists already")
         let nameElems = reverseDict(elemNames);
         workingID = nameElems[response[0]];
-        recipes[selectedPrev[0][selected[1]]] = workingID;
+        recipes[selectedPrev[0]][selected[1]] = workingID;
         newElemBuffer.push([workingID, selectedPrev[0], selected[1]]);
         if (reverse.checked) {
-            recipes[selectedPrev[1][selected[0]]] = workingID;
+            recipes[selectedPrev[1]][selected[0]] = workingID;
         }
     }
     
