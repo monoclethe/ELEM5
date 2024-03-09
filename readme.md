@@ -2,6 +2,9 @@
 My personal Elemental remake. It's very basic at the moment as it is still in the alpha phase..
 
 # Changelog
+## Version 1.32a
+### Bugfixes
+- Fixed redundant recipes again...
 ## Version 1.31a
 ### Bugfixes
 - Fixed redundant recipes weird behavior

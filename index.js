@@ -54,7 +54,7 @@ function combine () {
     if (selected[0] !== -1 && selected[1] !== -1) {
         product = recipes[selected[0]][selected[1]];
         if (!discovered.includes(product) && product !== undefined) {
-            discovered.push(product);
+            discovered.push(product.toString());
             updateDispElems();
             newElemBuffer.push([product, selected[0], selected[1]]);
             updateNewElems();
@@ -148,7 +148,7 @@ function inputElemData () {
         }
     } else if (!elemExists) {
         elements[Object.keys(elements).length] = [response[0], response[1]];
-        discovered.push(Object.keys(elements).length - 1);
+        discovered.push((Object.keys(elements).length - 1).toString());
         recipes[Object.keys(elements).length - 1] = {};
         newElemBuffer.push([Object.keys(elements).length - 1, selectedPrev[0], selectedPrev[1]]);
         recipes[selected[0]][selected[1]] = Object.keys(elements).length - 1;
