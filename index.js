@@ -141,22 +141,22 @@ function inputElemData () {
         console.log("found element exists already")
         let nameElems = reverseDict(elemNames);
         workingID = nameElems[response[0]];
-        recipes[selected[0]][selected[1]] = workingID;
+        recipes[selected[0]][selected[1]] = workingID.toString();
         newElemBuffer.push([workingID, selectedPrev[0], selected[1]]);
         if (reverse.checked) {
-            recipes[selected[1]][selected[0]] = workingID;
+            recipes[selected[1]][selected[0]] = workingID.toString();
         }
     } else if (!elemExists) {
         elements[Object.keys(elements).length] = [response[0], response[1]];
         discovered.push((Object.keys(elements).length - 1).toString());
         recipes[Object.keys(elements).length - 1] = {};
         newElemBuffer.push([Object.keys(elements).length - 1, selectedPrev[0], selectedPrev[1]]);
-        recipes[selected[0]][selected[1]] = Object.keys(elements).length - 1;
+        recipes[selected[0]][selected[1]] = (Object.keys(elements).length - 1).toString();
     }
     
     if (reverse.checked && !elemExists) {
         if (!recipes[selected[1]][selected[0]]) {
-            recipes[selected[1]][selected[0]] = Object.keys(elements).length - 1;
+            recipes[selected[1]][selected[0]] = (Object.keys(elements).length - 1).toString();
         }
     }
     updateDispElems();

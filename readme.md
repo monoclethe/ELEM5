@@ -2,6 +2,9 @@
 My personal Elemental remake. It's very basic at the moment as it is still in the alpha phase..
 
 # Changelog
+## Version 1.33a (3/11/2024)
+### Bugfixes
+- Fixed the same element appearing multiple times when attempting a recipe that has already been used
 ## Version 1.32a (3/8/2024)
 ### Bugfixes
 - Fixed redundant recipes again...
