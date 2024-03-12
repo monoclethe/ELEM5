@@ -2,6 +2,8 @@ document.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
       combine();
       updateElemDisp();
+    } else if (event.key === "?") {
+        alert(discovered);
     }
 });
 
@@ -15,7 +17,7 @@ var newElemBuffer = [];
 var reverse = document.getElementById("reverse");
 var elements = {"0":["Air","lightblue"],"1":["Earth","brown"],"2":["Fire","red"],"3":["Water","blue"],"4":["Dust","gray"],"5":["Ash","black"],"6":["Heat","red"],"7":["Lava","orangered"],"8":["Magma","orangered"],"9":["Bubble","blue"],"10":["Mist","lightblue"],"11":["Dirt","brown"],"12":["Mud","brown"]}
 
-var recipes = {"0":{"1":4,"3":10},"1":{"0":4,"2":5,"3":12,"4":11,"6":7,"7":8},"2":{"1":5,"2":6},"3":{"0":9,"1":12,"11":12},"4":{"1":11},"5":{},"6":{"1":7},"7":{"1":8},"8":{},"9":{},"10":{},"11":{"3":12},"12":{}}
+var recipes = {"0":{"1":"4","3":"10"},"1":{"0":"4","2":"5","3":"12","4":"11","6":"7","7":"8"},"2":{"1":"5","2":"6"},"3":{"0":"9","1":"12","11":"12"},"4":{"1":"11"},"5":{},"6":{"1":"7"},"7":{"1":"8"},"8":{},"9":{},"10":{},"11":{"3":"12"},"12":{}}
 
 var createPopup = false;
 var menu = false;
